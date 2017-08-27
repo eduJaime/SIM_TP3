@@ -1,0 +1,41 @@
+package Clases;
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author MARCO
+ */
+
+import java.util.LinkedList;
+public abstract class Generador {
+    private int precision;
+
+    public Generador(int numero){
+        precision=numero;
+    }
+    public Generador(){
+        precision=0;
+    }
+
+
+    public double truncar(double nro){
+        if(precision != 0){
+        nro = Math.floor(nro * Math.pow(10,precision))/Math.pow(10,precision);
+        return (double)nro;
+        }
+        else{
+            return nro;
+        }
+        
+    }
+     abstract double generarNumeroAleatorio();//genera un numero aleatorio
+
+
+     abstract LinkedList generarNumeroAleatorio(int n);
+     // genera una cantidad n de numeros aleatorios y los devuelve en una lista
+
+}

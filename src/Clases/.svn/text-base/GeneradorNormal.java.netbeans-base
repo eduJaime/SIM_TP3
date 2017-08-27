@@ -1,0 +1,51 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package Clases;
+
+/**
+ *
+ * @author MARCO
+ */
+import java.util.LinkedList;
+public class GeneradorNormal extends Generador {
+private int media;
+private int desviacion;
+
+public GeneradorNormal(int precision, int medi, int desvi){
+    super(precision);
+    media= medi;
+    desviacion=desvi;
+}
+public GeneradorNormal( int medi, int desvi){
+    super();
+    media= medi;
+    desviacion=desvi;
+}
+
+public double generarNumeroAleatorio(){
+    double rnd=0;
+    for (int i=0; i<12;i++){
+        rnd+=Math.random();
+    }
+    return this.truncar(rnd-6);
+
+
+}
+
+public double normalizar(double rnd){
+    return ((rnd*desviacion)+media);
+    
+}
+
+public LinkedList generarNumeroAleatorio(int cantidad){
+    LinkedList lista = new LinkedList();
+     for (int i=0; i<cantidad;i++){
+            lista.add(i, normalizar(generarNumeroAleatorio()));
+        }
+        return lista;
+}
+
+}
